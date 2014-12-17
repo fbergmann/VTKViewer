@@ -25,6 +25,9 @@ $RECYCLE.BIN/
 .AppleDouble
 .LSOverride
 
+obj
+bin
+
 # Icon must end with two \r
 Icon
 
@@ -41,3 +44,5 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+*.suo
