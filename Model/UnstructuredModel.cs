@@ -65,6 +65,9 @@ namespace VTKViewer.Model
       var index = _Desc.GetIndexFor(point);
       if (index == -1) return result;
 
+      var x = _Desc.Coordinates[index, 0];
+      var y = _Desc.Coordinates[index, 1];
+
       foreach (var item in _Data)
         result.Add(item.Data[index]);
 

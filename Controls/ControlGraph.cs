@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Compare.DataTypes;
 using VTKViewer.Interfaces;
 using VTKViewer.Model;
 
@@ -40,12 +41,10 @@ namespace VTKViewer.Controls
 
     public void  DisplayPoint(PointF point)
     {
-      
-      Point = point;
-      txtX.Text = point.X.ToString();
-      txtY.Text = point.Y.ToString();
+      if (backgroundWorker1.IsBusy) return;
+      if (backgroundWorker2.IsBusy) return;
 
-      singleResult1.CSVResult = Model.GetCsvFor(point);
+      backgroundWorker2.RunWorkerAsync(point);
 
     }
 
@@ -81,6 +80,29 @@ namespace VTKViewer.Controls
     {
       progressBar1.Visible = false;
       DisplayPoint((PointF)e.Result);
+    }
+
+    private void OnResolvePoint(object sender, DoWorkEventArgs e)
+    {
+      var point = (PointF)e.Argument;
+      e.Result = Model.GetCsvFor(point);
+      Point = point;
+    }
+
+    private void OnResolvePointCompleted(object sender, RunWorkerCompletedEventArgs e)
+    {
+      if (e.Result == null) return;
+      singleResult1.CSVResult = (ResultSet) e.Result;
+      txtX.Text = Point.X.ToString();
+      txtY.Text = Point.Y.ToString();
+      var index = Model.Dimensions.GetIndexFor(Point);
+      if (index != -1)
+      {
+        var x = Model.Dimensions.Coordinates[index, 0];
+        var y = Model.Dimensions.Coordinates[index, 1];
+        singleResult1.Graph.GraphPane.Title.Text = string.Format("Values for Pos: {0},{1}", x, y);
+        singleResult1.Graph.GraphPane.Title.IsVisible = true;
+      }
     }
   }
 }

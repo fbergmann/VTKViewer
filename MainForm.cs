@@ -20,9 +20,9 @@ namespace VTKViewer
     {
       get
       {
-        if (tabControl1.SelectedIndex == 0)
-          return (ISingleRenderer) controlVTK1;
         if (tabControl1.SelectedIndex == 1)
+          return (ISingleRenderer) controlVTK1;
+        if (tabControl1.SelectedIndex == 0)
           return (ISingleRenderer)controlDmp1;        
         return null;
       }
@@ -45,8 +45,10 @@ namespace VTKViewer
       {
         if (ModifierKeys == Keys.Shift)
         { 
-         SelectedPoint = e;
-         lblPos.Text = string.Format("X: {0} Y: {1}", e.X, e.Y);
+          SelectedPoint = e;
+          lblPos.Text = string.Format("X: {0} Y: {1}", e.X, e.Y);
+          if (controlGraph1.Model == Model) 
+          controlGraph1.DisplayPoint(SelectedPoint);
         }
       };
       
@@ -56,25 +58,31 @@ namespace VTKViewer
     }
 
 
+    public void OpenFile(string filename)
+    {
+      timer1.Enabled = false;
+      Model = ParallelUnstructuredModel.FromFile(filename);
+      SelectedPoint = Model.Bounds.Location;
+      cmbVariables.Items.Clear();
+      cmbVariables.Items.AddRange(Model.Variables);
+      if (cmbVariables.Items.Count > 0)
+        cmbVariables.SelectedItem = cmbVariables.Items[0];
+      controlGraph1.InitializeFrom(Model, SelectedPoint);
+      UpdateUI();
+    }
+
     private void OnOpenClick(object sender, EventArgs e)
     {
-      
-      using (var dialog = new OpenFileDialog 
-      { 
-        AutoUpgradeEnabled = true, 
-        Filter = "PVD files|*.pvd|VTU files|*.vtu;*.pvtu|All files|*.*" 
+
+      using (var dialog = new OpenFileDialog
+      {
+        AutoUpgradeEnabled = true,
+        Filter = "PVD files|*.pvd|VTU files|*.vtu;*.pvtu|All files|*.*"
       })
       {
         if (dialog.ShowDialog() == DialogResult.OK)
         {
-          timer1.Enabled = false;
-          Model = ParallelUnstructuredModel.FromFile(dialog.FileName);
-          SelectedPoint = Model.Bounds.Location;
-          cmbVariables.Items.Clear();
-          cmbVariables.Items.AddRange(Model.Variables);
-          if (cmbVariables.Items.Count > 0)
-            cmbVariables.SelectedItem = cmbVariables.Items[0];
-          UpdateUI();
+          OpenFile(dialog.FileName);
         }
       }
     }
@@ -159,10 +167,6 @@ namespace VTKViewer
     {
       if (tabControl1.SelectedIndex < 2)
         DisplayEntry(Model.Current);
-      else
-      {
-        controlGraph1.InitializeFrom( Model, SelectedPoint);
-      }
     }
   }
 }

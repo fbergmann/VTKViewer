@@ -35,13 +35,7 @@ namespace VTKViewer
       this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
       this.statusStrip1 = new System.Windows.Forms.StatusStrip();
       this.lblMessage = new System.Windows.Forms.ToolStripStatusLabel();
-      this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-      this.tabControl1 = new System.Windows.Forms.TabControl();
-      this.tabVTK = new System.Windows.Forms.TabPage();
-      this.tabImage = new System.Windows.Forms.TabPage();
-      this.tabGraph = new System.Windows.Forms.TabPage();
-      this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+      this.lblPos = new System.Windows.Forms.ToolStripStatusLabel();
       this.menuStrip1 = new System.Windows.Forms.MenuStrip();
       this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,28 +82,31 @@ namespace VTKViewer
       this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
       this.timer1 = new System.Windows.Forms.Timer(this.components);
       this.toolStripContainer2 = new System.Windows.Forms.ToolStripContainer();
-      this.lblPos = new System.Windows.Forms.ToolStripStatusLabel();
-      this.controlPlayback1 = new VTKViewer.Controls.ControlPlayback();
-      this.controlVTK1 = new VTKViewer.Controls.ControlVTK();
-      this.controlDmp1 = new VTKViewer.Controls.ControlDmp();
+      this.splitContainer1 = new System.Windows.Forms.SplitContainer();
       this.controlGraph1 = new VTKViewer.Controls.ControlGraph();
+      this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+      this.controlPlayback1 = new VTKViewer.Controls.ControlPlayback();
+      this.tabControl1 = new System.Windows.Forms.TabControl();
+      this.tabVTK = new System.Windows.Forms.TabPage();
+      this.controlVTK1 = new VTKViewer.Controls.ControlVTK();
+      this.tabImage = new System.Windows.Forms.TabPage();
+      this.controlDmp1 = new VTKViewer.Controls.ControlDmp();
       this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
       this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
       this.toolStripContainer1.SuspendLayout();
       this.statusStrip1.SuspendLayout();
+      this.menuStrip1.SuspendLayout();
+      this.toolStrip1.SuspendLayout();
+      this.toolStripContainer2.SuspendLayout();
       ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+      this.splitContainer1.Panel1.SuspendLayout();
       this.splitContainer1.Panel2.SuspendLayout();
       this.splitContainer1.SuspendLayout();
       this.tableLayoutPanel1.SuspendLayout();
       this.tabControl1.SuspendLayout();
       this.tabVTK.SuspendLayout();
       this.tabImage.SuspendLayout();
-      this.tabGraph.SuspendLayout();
-      this.tableLayoutPanel2.SuspendLayout();
-      this.menuStrip1.SuspendLayout();
-      this.toolStrip1.SuspendLayout();
-      this.toolStripContainer2.SuspendLayout();
       this.SuspendLayout();
       // 
       // toolStripContainer1
@@ -152,92 +149,10 @@ namespace VTKViewer
       this.lblMessage.Size = new System.Drawing.Size(729, 17);
       this.lblMessage.Spring = true;
       // 
-      // splitContainer1
+      // lblPos
       // 
-      this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-      this.splitContainer1.Name = "splitContainer1";
-      this.splitContainer1.Panel1Collapsed = true;
-      // 
-      // splitContainer1.Panel2
-      // 
-      this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
-      this.splitContainer1.Size = new System.Drawing.Size(744, 370);
-      this.splitContainer1.SplitterDistance = 151;
-      this.splitContainer1.TabIndex = 0;
-      // 
-      // tableLayoutPanel1
-      // 
-      this.tableLayoutPanel1.ColumnCount = 1;
-      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel1.Controls.Add(this.controlPlayback1, 0, 1);
-      this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 0);
-      this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-      this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-      this.tableLayoutPanel1.RowCount = 2;
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
-      this.tableLayoutPanel1.Size = new System.Drawing.Size(744, 370);
-      this.tableLayoutPanel1.TabIndex = 1;
-      // 
-      // tabControl1
-      // 
-      this.tabControl1.Controls.Add(this.tabVTK);
-      this.tabControl1.Controls.Add(this.tabImage);
-      this.tabControl1.Controls.Add(this.tabGraph);
-      this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tabControl1.Location = new System.Drawing.Point(3, 3);
-      this.tabControl1.Name = "tabControl1";
-      this.tabControl1.SelectedIndex = 0;
-      this.tabControl1.Size = new System.Drawing.Size(738, 305);
-      this.tabControl1.TabIndex = 2;
-      this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.OnTabPageChanged);
-      // 
-      // tabVTK
-      // 
-      this.tabVTK.Controls.Add(this.controlVTK1);
-      this.tabVTK.Location = new System.Drawing.Point(4, 22);
-      this.tabVTK.Name = "tabVTK";
-      this.tabVTK.Padding = new System.Windows.Forms.Padding(3);
-      this.tabVTK.Size = new System.Drawing.Size(710, 279);
-      this.tabVTK.TabIndex = 0;
-      this.tabVTK.Text = "VTK Viewer";
-      this.tabVTK.UseVisualStyleBackColor = true;
-      // 
-      // tabImage
-      // 
-      this.tabImage.Controls.Add(this.controlDmp1);
-      this.tabImage.Location = new System.Drawing.Point(4, 22);
-      this.tabImage.Name = "tabImage";
-      this.tabImage.Padding = new System.Windows.Forms.Padding(3);
-      this.tabImage.Size = new System.Drawing.Size(710, 279);
-      this.tabImage.TabIndex = 1;
-      this.tabImage.Text = "Image";
-      this.tabImage.UseVisualStyleBackColor = true;
-      // 
-      // tabGraph
-      // 
-      this.tabGraph.Controls.Add(this.tableLayoutPanel2);
-      this.tabGraph.Location = new System.Drawing.Point(4, 22);
-      this.tabGraph.Name = "tabGraph";
-      this.tabGraph.Size = new System.Drawing.Size(730, 279);
-      this.tabGraph.TabIndex = 2;
-      this.tabGraph.Text = "2D Graph";
-      this.tabGraph.UseVisualStyleBackColor = true;
-      // 
-      // tableLayoutPanel2
-      // 
-      this.tableLayoutPanel2.ColumnCount = 1;
-      this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-      this.tableLayoutPanel2.Controls.Add(this.controlGraph1, 0, 0);
-      this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-      this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-      this.tableLayoutPanel2.RowCount = 1;
-      this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-      this.tableLayoutPanel2.Size = new System.Drawing.Size(730, 279);
-      this.tableLayoutPanel2.TabIndex = 0;
+      this.lblPos.Name = "lblPos";
+      this.lblPos.Size = new System.Drawing.Size(0, 17);
       // 
       // menuStrip1
       // 
@@ -619,18 +534,78 @@ namespace VTKViewer
       this.toolStripContainer2.TabIndex = 0;
       this.toolStripContainer2.Text = "toolStripContainer2";
       // 
-      // lblPos
+      // splitContainer1
       // 
-      this.lblPos.Name = "lblPos";
-      this.lblPos.Size = new System.Drawing.Size(0, 17);
+      this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+      this.splitContainer1.Name = "splitContainer1";
+      // 
+      // splitContainer1.Panel1
+      // 
+      this.splitContainer1.Panel1.Controls.Add(this.controlGraph1);
+      // 
+      // splitContainer1.Panel2
+      // 
+      this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel1);
+      this.splitContainer1.Size = new System.Drawing.Size(744, 370);
+      this.splitContainer1.SplitterDistance = 311;
+      this.splitContainer1.TabIndex = 0;
+      // 
+      // controlGraph1
+      // 
+      this.controlGraph1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.controlGraph1.Location = new System.Drawing.Point(0, 0);
+      this.controlGraph1.Model = null;
+      this.controlGraph1.Name = "controlGraph1";
+      this.controlGraph1.Point = ((System.Drawing.PointF)(resources.GetObject("controlGraph1.Point")));
+      this.controlGraph1.Size = new System.Drawing.Size(311, 370);
+      this.controlGraph1.TabIndex = 1;
+      // 
+      // tableLayoutPanel1
+      // 
+      this.tableLayoutPanel1.ColumnCount = 1;
+      this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel1.Controls.Add(this.controlPlayback1, 0, 1);
+      this.tableLayoutPanel1.Controls.Add(this.tabControl1, 0, 0);
+      this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+      this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+      this.tableLayoutPanel1.RowCount = 2;
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+      this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
+      this.tableLayoutPanel1.Size = new System.Drawing.Size(429, 370);
+      this.tableLayoutPanel1.TabIndex = 1;
       // 
       // controlPlayback1
       // 
       this.controlPlayback1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.controlPlayback1.Location = new System.Drawing.Point(3, 314);
       this.controlPlayback1.Name = "controlPlayback1";
-      this.controlPlayback1.Size = new System.Drawing.Size(738, 53);
+      this.controlPlayback1.Size = new System.Drawing.Size(423, 53);
       this.controlPlayback1.TabIndex = 1;
+      // 
+      // tabControl1
+      // 
+      this.tabControl1.Controls.Add(this.tabImage);
+      this.tabControl1.Controls.Add(this.tabVTK);
+      this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.tabControl1.Location = new System.Drawing.Point(3, 3);
+      this.tabControl1.Name = "tabControl1";
+      this.tabControl1.SelectedIndex = 0;
+      this.tabControl1.Size = new System.Drawing.Size(423, 305);
+      this.tabControl1.TabIndex = 2;
+      this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.OnTabPageChanged);
+      // 
+      // tabVTK
+      // 
+      this.tabVTK.Controls.Add(this.controlVTK1);
+      this.tabVTK.Location = new System.Drawing.Point(4, 22);
+      this.tabVTK.Name = "tabVTK";
+      this.tabVTK.Padding = new System.Windows.Forms.Padding(3);
+      this.tabVTK.Size = new System.Drawing.Size(415, 279);
+      this.tabVTK.TabIndex = 0;
+      this.tabVTK.Text = "VTK Viewer";
+      this.tabVTK.UseVisualStyleBackColor = true;
       // 
       // controlVTK1
       // 
@@ -638,8 +613,19 @@ namespace VTKViewer
       this.controlVTK1.Location = new System.Drawing.Point(3, 3);
       this.controlVTK1.Model = null;
       this.controlVTK1.Name = "controlVTK1";
-      this.controlVTK1.Size = new System.Drawing.Size(704, 273);
+      this.controlVTK1.Size = new System.Drawing.Size(409, 273);
       this.controlVTK1.TabIndex = 0;
+      // 
+      // tabImage
+      // 
+      this.tabImage.Controls.Add(this.controlDmp1);
+      this.tabImage.Location = new System.Drawing.Point(4, 22);
+      this.tabImage.Name = "tabImage";
+      this.tabImage.Padding = new System.Windows.Forms.Padding(3);
+      this.tabImage.Size = new System.Drawing.Size(415, 279);
+      this.tabImage.TabIndex = 1;
+      this.tabImage.Text = "Image";
+      this.tabImage.UseVisualStyleBackColor = true;
       // 
       // controlDmp1
       // 
@@ -648,18 +634,8 @@ namespace VTKViewer
       this.controlDmp1.Location = new System.Drawing.Point(3, 3);
       this.controlDmp1.Model = null;
       this.controlDmp1.Name = "controlDmp1";
-      this.controlDmp1.Size = new System.Drawing.Size(704, 273);
+      this.controlDmp1.Size = new System.Drawing.Size(409, 273);
       this.controlDmp1.TabIndex = 0;
-      // 
-      // controlGraph1
-      // 
-      this.controlGraph1.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.controlGraph1.Location = new System.Drawing.Point(3, 3);
-      this.controlGraph1.Model = null;
-      this.controlGraph1.Name = "controlGraph1";
-      this.controlGraph1.Point = ((System.Drawing.PointF)(resources.GetObject("controlGraph1.Point")));
-      this.controlGraph1.Size = new System.Drawing.Size(724, 273);
-      this.controlGraph1.TabIndex = 1;
       // 
       // MainForm
       // 
@@ -681,6 +657,13 @@ namespace VTKViewer
       this.toolStripContainer1.PerformLayout();
       this.statusStrip1.ResumeLayout(false);
       this.statusStrip1.PerformLayout();
+      this.menuStrip1.ResumeLayout(false);
+      this.menuStrip1.PerformLayout();
+      this.toolStrip1.ResumeLayout(false);
+      this.toolStrip1.PerformLayout();
+      this.toolStripContainer2.ResumeLayout(false);
+      this.toolStripContainer2.PerformLayout();
+      this.splitContainer1.Panel1.ResumeLayout(false);
       this.splitContainer1.Panel2.ResumeLayout(false);
       ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
       this.splitContainer1.ResumeLayout(false);
@@ -688,14 +671,6 @@ namespace VTKViewer
       this.tabControl1.ResumeLayout(false);
       this.tabVTK.ResumeLayout(false);
       this.tabImage.ResumeLayout(false);
-      this.tabGraph.ResumeLayout(false);
-      this.tableLayoutPanel2.ResumeLayout(false);
-      this.menuStrip1.ResumeLayout(false);
-      this.menuStrip1.PerformLayout();
-      this.toolStrip1.ResumeLayout(false);
-      this.toolStrip1.PerformLayout();
-      this.toolStripContainer2.ResumeLayout(false);
-      this.toolStripContainer2.PerformLayout();
       this.ResumeLayout(false);
 
     }
@@ -756,9 +731,7 @@ namespace VTKViewer
     private System.Windows.Forms.TabControl tabControl1;
     private System.Windows.Forms.TabPage tabVTK;
     private System.Windows.Forms.TabPage tabImage;
-    private System.Windows.Forms.TabPage tabGraph;
     private System.Windows.Forms.ToolStripContainer toolStripContainer2;
-    private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     private ControlVTK controlVTK1;
     private ControlDmp controlDmp1;
     private ControlGraph controlGraph1;

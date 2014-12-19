@@ -64,6 +64,7 @@ namespace VTKViewer.Model
       }
 
       var result = new ResultSet(headers, data);
+      
       return result;
     }
     /// <summary>

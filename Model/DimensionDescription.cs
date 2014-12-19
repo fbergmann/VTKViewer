@@ -70,9 +70,9 @@ namespace VTKViewer.Model
       yIndices.Sort();
 
       if (xIndices.Count > 0)
-      result.DistanceX = xIndices[1];
+      result.DistanceX = xIndices[1]- xIndices[0];
       if (yIndices.Count > 0)
-      result.DistanceY = yIndices[1];
+        result.DistanceY = yIndices[1] - yIndices[0];
 
       for (var i = 0; i < numPoints; i++)
       {
@@ -91,8 +91,9 @@ namespace VTKViewer.Model
     {
       for (int i = 0;i < Coordinates.GetLength(0); ++i)
         if (
-          Math.Abs(Coordinates[i, 0] - point.X) < DistanceX && 
-          Math.Abs(Coordinates[i, 1] - point.Y) < DistanceY)
+          Math.Pow(Coordinates[i, 0] - point.X, 2)  +
+          Math.Pow(Coordinates[i, 1] - point.Y, 2)
+          < (DistanceX*DistanceY/2))
           return i;
       return -1;
     }

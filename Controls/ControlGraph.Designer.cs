@@ -31,12 +31,13 @@
       this.singleResult1 = new ZedCompareData.SingleResult();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
       this.panel1 = new System.Windows.Forms.Panel();
+      this.progressBar1 = new System.Windows.Forms.ProgressBar();
       this.cmdUpdate = new System.Windows.Forms.Button();
       this.txtY = new System.Windows.Forms.TextBox();
       this.txtX = new System.Windows.Forms.TextBox();
       this.label1 = new System.Windows.Forms.Label();
       this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-      this.progressBar1 = new System.Windows.Forms.ProgressBar();
+      this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
       this.tableLayoutPanel1.SuspendLayout();
       this.panel1.SuspendLayout();
       this.SuspendLayout();
@@ -78,6 +79,16 @@
       this.panel1.Size = new System.Drawing.Size(639, 31);
       this.panel1.TabIndex = 1;
       // 
+      // progressBar1
+      // 
+      this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+      this.progressBar1.Location = new System.Drawing.Point(299, 4);
+      this.progressBar1.Name = "progressBar1";
+      this.progressBar1.Size = new System.Drawing.Size(337, 23);
+      this.progressBar1.TabIndex = 4;
+      this.progressBar1.Visible = false;
+      // 
       // cmdUpdate
       // 
       this.cmdUpdate.Location = new System.Drawing.Point(218, 4);
@@ -118,15 +129,10 @@
       this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.OnProgressChanged);
       this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.OnWorkerCompleted);
       // 
-      // progressBar1
+      // backgroundWorker2
       // 
-      this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-      this.progressBar1.Location = new System.Drawing.Point(299, 4);
-      this.progressBar1.Name = "progressBar1";
-      this.progressBar1.Size = new System.Drawing.Size(337, 23);
-      this.progressBar1.TabIndex = 4;
-      this.progressBar1.Visible = false;
+      this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.OnResolvePoint);
+      this.backgroundWorker2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.OnResolvePointCompleted);
       // 
       // ControlGraph
       // 
@@ -153,6 +159,7 @@
     private System.Windows.Forms.Button cmdUpdate;
     private System.ComponentModel.BackgroundWorker backgroundWorker1;
     private System.Windows.Forms.ProgressBar progressBar1;
+    private System.ComponentModel.BackgroundWorker backgroundWorker2;
 
   }
 }

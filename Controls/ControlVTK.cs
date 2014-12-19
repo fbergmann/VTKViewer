@@ -132,6 +132,8 @@ namespace VTKViewer.Controls
 
     private vtkRenderer ClearOnly()
     {
+      if (renderWindowControl1 == null || renderWindowControl1.RenderWindow == null)
+        return null;
       var ren1 = renderWindowControl1.RenderWindow.
                   GetRenderers().GetFirstRenderer();
 
@@ -147,6 +149,7 @@ namespace VTKViewer.Controls
     private void ClearActors()
     {     
       vtkRenderer ren1 = ClearOnly();
+      if (ren1 == null) return;
       var renWin = renderWindowControl1.RenderWindow;
       renWin.Render();
       ren1.ResetCamera();
