@@ -1,5 +1,6 @@
 using System;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -62,6 +63,8 @@ namespace VTKViewer.Model
 
       List<double> result = new List<double>();
 
+      if (_Desc == null) return result;
+
       var index = _Desc.GetIndexFor(point);
       if (index == -1) return result;
 
@@ -77,7 +80,12 @@ namespace VTKViewer.Model
     {
       Resolve();
 
+      if (_Desc == null) return null;
+
       int numCoords = _Desc.Coordinates.GetLength(0)-1;
+
+      if (numCoords < 0) return null;
+
       int numRows = (int)_Desc.Coordinates[numCoords, 2] + 1;
       int numCols = (int)_Desc.Coordinates[numCoords, 3] + 1;
 
@@ -118,6 +126,8 @@ namespace VTKViewer.Model
     {
       if (IsResolved) return;
 
+      if (File.Exists(FileName))
+      { 
         if (FileName.ToLowerInvariant().EndsWith(".pvtu"))
         {
           var reader = vtkXMLPUnstructuredGridReader.New();
@@ -138,7 +148,8 @@ namespace VTKViewer.Model
           _Data = model._Data;
           _Desc = model._Desc;
         }
-    
+      }
+
       IsResolved = true;
 
     }

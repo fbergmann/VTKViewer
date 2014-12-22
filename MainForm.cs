@@ -35,6 +35,8 @@ namespace VTKViewer
     {
       InitializeComponent();
 
+      controlGraph1.ProgressBar = toolStripProgressBar1;
+
       Model = new ParallelUnstructuredModel();
       SelectedPoint = Model.Bounds.Location;
 

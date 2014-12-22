@@ -17,6 +17,7 @@ namespace VTKViewer.Controls
   {
     public ControlGraph()
     {
+      _ProgressBar = null;
       InitializeComponent();
     }
     
@@ -29,12 +30,26 @@ namespace VTKViewer.Controls
       InitializeFrom(model, model.Dimensions.Bounds.Location);
     }
 
+    private ToolStripProgressBar _ProgressBar;
+    public ToolStripProgressBar ProgressBar
+    {
+      get
+      {
+        return _ProgressBar;
+      }
+      set
+      {
+        _ProgressBar = value;
+      }
+    }
+
     public void InitializeFrom(ParallelUnstructuredModel model, PointF location)
     {
       Model = model;
 
       if (backgroundWorker1.IsBusy) return;
-      progressBar1.Visible = true;
+      if (_ProgressBar != null) _ProgressBar.Visible = true;
+      
       backgroundWorker1.RunWorkerAsync(location);      
     }
     
@@ -73,12 +88,15 @@ namespace VTKViewer.Controls
 
     private void OnProgressChanged(object sender, ProgressChangedEventArgs e)
     {
-      progressBar1.Value = e.ProgressPercentage;
+      if (_ProgressBar == null) return;
+
+      _ProgressBar.Value = e.ProgressPercentage;
     }
 
     private void OnWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
-      progressBar1.Visible = false;
+      if (_ProgressBar != null)
+        _ProgressBar.Visible = false;
       DisplayPoint((PointF)e.Result);
     }
 
@@ -91,7 +109,7 @@ namespace VTKViewer.Controls
 
     private void OnResolvePointCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
-      if (e.Result == null) return;
+      if (e.Result == null || Model.Dimensions == null) return;
       singleResult1.CSVResult = (ResultSet) e.Result;
       txtX.Text = Point.X.ToString();
       txtY.Text = Point.Y.ToString();
