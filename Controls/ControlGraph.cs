@@ -88,7 +88,7 @@ namespace VTKViewer.Controls
 
     private void OnProgressChanged(object sender, ProgressChangedEventArgs e)
     {
-      if (_ProgressBar == null) return;
+      if (_ProgressBar == null || _ProgressBar.IsDisposed) return;
 
       _ProgressBar.Value = e.ProgressPercentage;
     }

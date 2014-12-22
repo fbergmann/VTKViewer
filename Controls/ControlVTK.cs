@@ -105,7 +105,6 @@ namespace VTKViewer.Controls
         string current = selection.GetArrayName(i);
         reader.SetPointArrayStatus(
           current, current == Model.SelectedVariable ? 1 : 0);
-        //Debug.WriteLine(reader.GetPointArrayStatus(current));
       }
       reader.Update();
 
@@ -166,7 +165,7 @@ namespace VTKViewer.Controls
       {
         base.OnHandleCreated(e);
       }
-      catch (Exception exception)
+      catch
       {
         
       }

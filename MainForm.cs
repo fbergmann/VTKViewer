@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Kitware.VTK;
+using LibEditSpatial.Model;
 using VTKViewer.Interfaces;
 using VTKViewer.Model;
 
@@ -169,6 +170,58 @@ namespace VTKViewer
     {
       if (tabControl1.SelectedIndex < 2)
         DisplayEntry(Model.Current);
+    }
+
+    public string CurrentPalette { get; set; }
+    private void OnPaletteChanged(object sender, EventArgs e)
+    {
+      int index = cmbPalettes.SelectedIndex;
+
+      if (index < 0) return;
+
+      if ((string)cmbPalettes.Items[index] == CurrentPalette)
+        return;
+
+      if (index == 0)
+      {
+        DmpPalette.Default = Default;
+        //ctrlPalette1.ChangePalette(DmpPalette.Default);
+      }
+      else
+        try
+        {
+          DmpPalette.Default = DmpPalette.FromFile(PaletteFiles[index - 1]);          
+        }
+        catch
+        {
+        }
+      CurrentPalette = (string)cmbPalettes.Items[index];
+      DisplayEntry(Model.Current);
+    }
+
+
+
+    public String[] PaletteFiles { get; set; }
+
+    internal LibEditSpatial.Model.DmpPalette Default { get; set; }
+
+    private void LoadPalettes(string baseDirectory)
+    {
+      PaletteFiles = Directory.GetFiles(baseDirectory, "*.txt", SearchOption.TopDirectoryOnly);
+      cmbPalettes.Items.Clear();
+      cmbPalettes.Items.Add("Default");
+      foreach (string file in PaletteFiles)
+      {
+        cmbPalettes.Items.Add(Path.GetFileNameWithoutExtension(file));
+      }
+    }
+
+    private void OnLoad(object sender, EventArgs e)
+    {
+      Default = DmpPalette.Default;
+      //ctrlPalette1.Palette = DmpPalette.Default;
+
+      LoadPalettes(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Palettes"));
     }
   }
 }

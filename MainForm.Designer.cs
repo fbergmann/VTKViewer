@@ -36,6 +36,7 @@ namespace VTKViewer
       this.statusStrip1 = new System.Windows.Forms.StatusStrip();
       this.lblMessage = new System.Windows.Forms.ToolStripStatusLabel();
       this.lblPos = new System.Windows.Forms.ToolStripStatusLabel();
+      this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
       this.splitContainer1 = new System.Windows.Forms.SplitContainer();
       this.controlGraph1 = new VTKViewer.Controls.ControlGraph();
       this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -87,11 +88,12 @@ namespace VTKViewer
       this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
       this.txtTicks = new System.Windows.Forms.ToolStripTextBox();
       this.cmbVariables = new System.Windows.Forms.ToolStripComboBox();
+      this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+      this.cmbPalettes = new System.Windows.Forms.ToolStripComboBox();
       this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
       this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
       this.timer1 = new System.Windows.Forms.Timer(this.components);
       this.toolStripContainer2 = new System.Windows.Forms.ToolStripContainer();
-      this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
       this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
       this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -148,13 +150,19 @@ namespace VTKViewer
       // lblMessage
       // 
       this.lblMessage.Name = "lblMessage";
-      this.lblMessage.Size = new System.Drawing.Size(596, 17);
+      this.lblMessage.Size = new System.Drawing.Size(729, 17);
       this.lblMessage.Spring = true;
       // 
       // lblPos
       // 
       this.lblPos.Name = "lblPos";
       this.lblPos.Size = new System.Drawing.Size(0, 17);
+      // 
+      // toolStripProgressBar1
+      // 
+      this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+      this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+      this.toolStripProgressBar1.Visible = false;
       // 
       // splitContainer1
       // 
@@ -180,6 +188,7 @@ namespace VTKViewer
       this.controlGraph1.Model = null;
       this.controlGraph1.Name = "controlGraph1";
       this.controlGraph1.Point = ((System.Drawing.PointF)(resources.GetObject("controlGraph1.Point")));
+      this.controlGraph1.ProgressBar = null;
       this.controlGraph1.Size = new System.Drawing.Size(311, 370);
       this.controlGraph1.TabIndex = 1;
       // 
@@ -513,11 +522,13 @@ namespace VTKViewer
             this.toolStripSeparator8,
             this.txtTicks,
             this.cmbVariables,
+            this.toolStripSeparator9,
+            this.cmbPalettes,
             this.toolStripSeparator1,
             this.helpToolStripButton});
       this.toolStrip1.Location = new System.Drawing.Point(3, 24);
       this.toolStrip1.Name = "toolStrip1";
-      this.toolStrip1.Size = new System.Drawing.Size(439, 25);
+      this.toolStrip1.Size = new System.Drawing.Size(568, 25);
       this.toolStrip1.TabIndex = 0;
       // 
       // newToolStripButton
@@ -607,6 +618,17 @@ namespace VTKViewer
       this.cmbVariables.Size = new System.Drawing.Size(121, 25);
       this.cmbVariables.SelectedIndexChanged += new System.EventHandler(this.OnVariableChanged);
       // 
+      // toolStripSeparator9
+      // 
+      this.toolStripSeparator9.Name = "toolStripSeparator9";
+      this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
+      // 
+      // cmbPalettes
+      // 
+      this.cmbPalettes.Name = "cmbPalettes";
+      this.cmbPalettes.Size = new System.Drawing.Size(121, 25);
+      this.cmbPalettes.SelectedIndexChanged += new System.EventHandler(this.OnPaletteChanged);
+      // 
       // toolStripSeparator1
       // 
       this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -639,12 +661,6 @@ namespace VTKViewer
       this.toolStripContainer2.TabIndex = 0;
       this.toolStripContainer2.Text = "toolStripContainer2";
       // 
-      // toolStripProgressBar1
-      // 
-      this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-      this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
-      this.toolStripProgressBar1.Visible = false;
-      // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -656,6 +672,7 @@ namespace VTKViewer
       this.Name = "MainForm";
       this.Text = "VTK Viewer";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnFormClosing);
+      this.Load += new System.EventHandler(this.OnLoad);
       this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
       this.toolStripContainer1.BottomToolStripPanel.PerformLayout();
       this.toolStripContainer1.ContentPanel.ResumeLayout(false);
@@ -745,6 +762,8 @@ namespace VTKViewer
     private ControlGraph controlGraph1;
     private System.Windows.Forms.ToolStripStatusLabel lblPos;
     private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
+    private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
+    private System.Windows.Forms.ToolStripComboBox cmbPalettes;
   }
 }
 
