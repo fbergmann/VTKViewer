@@ -94,6 +94,8 @@ namespace VTKViewer
       this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
       this.timer1 = new System.Windows.Forms.Timer(this.components);
       this.toolStripContainer2 = new System.Windows.Forms.ToolStripContainer();
+      this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+      this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
       this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -287,6 +289,8 @@ namespace VTKViewer
       this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newToolStripMenuItem,
             this.openToolStripMenuItem,
+            this.toolStripSeparator10,
+            this.toolStripMenuItem1,
             this.toolStripSeparator2,
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem,
@@ -305,7 +309,7 @@ namespace VTKViewer
       this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.newToolStripMenuItem.Name = "newToolStripMenuItem";
       this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-      this.newToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+      this.newToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
       this.newToolStripMenuItem.Text = "&New";
       this.newToolStripMenuItem.Click += new System.EventHandler(this.OnNewClick);
       // 
@@ -315,14 +319,14 @@ namespace VTKViewer
       this.openToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.openToolStripMenuItem.Name = "openToolStripMenuItem";
       this.openToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-      this.openToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+      this.openToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
       this.openToolStripMenuItem.Text = "&Open";
       this.openToolStripMenuItem.Click += new System.EventHandler(this.OnOpenClick);
       // 
       // toolStripSeparator2
       // 
       this.toolStripSeparator2.Name = "toolStripSeparator2";
-      this.toolStripSeparator2.Size = new System.Drawing.Size(143, 6);
+      this.toolStripSeparator2.Size = new System.Drawing.Size(173, 6);
       // 
       // saveToolStripMenuItem
       // 
@@ -330,19 +334,19 @@ namespace VTKViewer
       this.saveToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
       this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-      this.saveToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+      this.saveToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
       this.saveToolStripMenuItem.Text = "&Save";
       // 
       // saveAsToolStripMenuItem
       // 
       this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-      this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+      this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
       this.saveAsToolStripMenuItem.Text = "Save &As";
       // 
       // toolStripSeparator3
       // 
       this.toolStripSeparator3.Name = "toolStripSeparator3";
-      this.toolStripSeparator3.Size = new System.Drawing.Size(143, 6);
+      this.toolStripSeparator3.Size = new System.Drawing.Size(173, 6);
       // 
       // printToolStripMenuItem
       // 
@@ -350,7 +354,7 @@ namespace VTKViewer
       this.printToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.printToolStripMenuItem.Name = "printToolStripMenuItem";
       this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-      this.printToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+      this.printToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
       this.printToolStripMenuItem.Text = "&Print";
       // 
       // printPreviewToolStripMenuItem
@@ -358,18 +362,18 @@ namespace VTKViewer
       this.printPreviewToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("printPreviewToolStripMenuItem.Image")));
       this.printPreviewToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
       this.printPreviewToolStripMenuItem.Name = "printPreviewToolStripMenuItem";
-      this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+      this.printPreviewToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
       this.printPreviewToolStripMenuItem.Text = "Print Pre&view";
       // 
       // toolStripSeparator4
       // 
       this.toolStripSeparator4.Name = "toolStripSeparator4";
-      this.toolStripSeparator4.Size = new System.Drawing.Size(143, 6);
+      this.toolStripSeparator4.Size = new System.Drawing.Size(173, 6);
       // 
       // exitToolStripMenuItem
       // 
       this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-      this.exitToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+      this.exitToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
       this.exitToolStripMenuItem.Text = "E&xit";
       this.exitToolStripMenuItem.Click += new System.EventHandler(this.OnExitClick);
       // 
@@ -661,6 +665,19 @@ namespace VTKViewer
       this.toolStripContainer2.TabIndex = 0;
       this.toolStripContainer2.Text = "toolStripContainer2";
       // 
+      // toolStripSeparator10
+      // 
+      this.toolStripSeparator10.Name = "toolStripSeparator10";
+      this.toolStripSeparator10.Size = new System.Drawing.Size(173, 6);
+      // 
+      // toolStripMenuItem1
+      // 
+      this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+      this.toolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+      this.toolStripMenuItem1.Size = new System.Drawing.Size(176, 22);
+      this.toolStripMenuItem1.Text = "&Export DMP";
+      this.toolStripMenuItem1.Click += new System.EventHandler(this.OnExportDmpClick);
+      // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -764,6 +781,8 @@ namespace VTKViewer
     private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
     private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
     private System.Windows.Forms.ToolStripComboBox cmbPalettes;
+    private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
+    private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
   }
 }
 

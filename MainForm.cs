@@ -24,7 +24,7 @@ namespace VTKViewer
         if (tabControl1.SelectedIndex == 1)
           return (ISingleRenderer) controlVTK1;
         if (tabControl1.SelectedIndex == 0)
-          return (ISingleRenderer)controlDmp1;        
+          return (ISingleRenderer)controlDmp1;
         return null;
       }
     }
@@ -71,6 +71,7 @@ namespace VTKViewer
       if (cmbVariables.Items.Count > 0)
         cmbVariables.SelectedItem = cmbVariables.Items[0];
       controlGraph1.InitializeFrom(Model, SelectedPoint);
+      OnPaletteChanged(this, EventArgs.Empty);
       UpdateUI();
     }
 
@@ -214,6 +215,7 @@ namespace VTKViewer
       {
         cmbPalettes.Items.Add(Path.GetFileNameWithoutExtension(file));
       }
+      cmbPalettes.SelectedText = "Default";
     }
 
     private void OnLoad(object sender, EventArgs e)
@@ -222,6 +224,17 @@ namespace VTKViewer
       //ctrlPalette1.Palette = DmpPalette.Default;
 
       LoadPalettes(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Palettes"));
+    }
+
+    private void OnExportDmpClick(object sender, EventArgs e)
+    {
+      var dir = LibEditSpatial.Util.GetDir(null);
+      for (int i = 0; i < Model.Variables.Length; i++)
+      {
+        var current = Path.Combine(dir, "conc_" + Model.Variables[i] + ".dmp");
+        var dmp = Model.Current.ToDmp(i);
+        dmp.SaveAs(current);
+      }
     }
   }
 }

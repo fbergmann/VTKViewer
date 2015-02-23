@@ -33,13 +33,15 @@
       // 
       // dmpRenderControl1
       // 
+      this.dmpRenderControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
       this.dmpRenderControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
       this.dmpRenderControl1.CurrentValue = 10D;
+      this.dmpRenderControl1.DisableEditing = false;
+      this.dmpRenderControl1.DisableNotification = false;
       this.dmpRenderControl1.Dock = System.Windows.Forms.DockStyle.Fill;
       this.dmpRenderControl1.Location = new System.Drawing.Point(0, 0);
       this.dmpRenderControl1.Model = null;
       this.dmpRenderControl1.Name = "dmpRenderControl1";
-      this.dmpRenderControl1.Padding = new System.Windows.Forms.Padding(5);
       this.dmpRenderControl1.PencilSize = 1;
       this.dmpRenderControl1.Size = new System.Drawing.Size(150, 150);
       this.dmpRenderControl1.TabIndex = 0;

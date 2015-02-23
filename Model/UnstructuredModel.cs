@@ -76,30 +76,31 @@ namespace VTKViewer.Model
 
       return result;
     }
-    public DmpModel ToDmp()
+
+    public DmpModel ToDmp(int index)
     {
       Resolve();
 
       if (_Desc == null) return null;
 
-      int numCoords = _Desc.Coordinates.GetLength(0)-1;
+      int numCoords = _Desc.Coordinates.GetLength(0) - 1;
 
       if (numCoords < 0) return null;
 
       int numRows = (int)_Desc.Coordinates[numCoords, 2] + 1;
       int numCols = (int)_Desc.Coordinates[numCoords, 3] + 1;
 
-      var result = new DmpModel(numRows, numCols) 
-      { 
-        Min = Min, 
-        Max = Max, 
+      var result = new DmpModel(numRows, numCols)
+      {
+        Min = Min,
+        Max = Max,
         MinX = _Desc.MinX,
         MaxX = _Desc.MaxX,
         MinY = _Desc.MinY,
-        MaxY = _Desc.MaxY,          
+        MaxY = _Desc.MaxY,
       };
 
-      var current = _Data[SelectedIndex];
+      var current = _Data[index];
 
       for (int i = 0; i < current.Data.Length; i++)
       {
@@ -108,8 +109,14 @@ namespace VTKViewer.Model
 
         result[(int)x, (int)y] = current.Data[i];
       }
-        
+
       return result;
+    }
+    public DmpModel ToDmp()
+    {
+      int index = SelectedIndex;
+
+      return ToDmp(index);
     }
     /// <summary>
     /// Initializes a new instance of the <see cref="UnstructuredModel"/> class.
