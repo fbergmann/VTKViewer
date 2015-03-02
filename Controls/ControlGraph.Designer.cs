@@ -36,8 +36,8 @@
       this.txtY = new System.Windows.Forms.TextBox();
       this.txtX = new System.Windows.Forms.TextBox();
       this.label1 = new System.Windows.Forms.Label();
-      this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-      this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
+      this.initializeWorker = new System.ComponentModel.BackgroundWorker();
+      this.displayWorker = new System.ComponentModel.BackgroundWorker();
       this.tableLayoutPanel1.SuspendLayout();
       this.panel1.SuspendLayout();
       this.SuspendLayout();
@@ -117,17 +117,17 @@
       this.label1.TabIndex = 0;
       this.label1.Text = "Selected Point: ";
       // 
-      // backgroundWorker1
+      // initializeWorker
       // 
-      this.backgroundWorker1.WorkerReportsProgress = true;
-      this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.OnDoWork);
-      this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.OnProgressChanged);
-      this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.OnWorkerCompleted);
+      this.initializeWorker.WorkerReportsProgress = true;
+      this.initializeWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.OnDoWork);
+      this.initializeWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.OnProgressChanged);
+      this.initializeWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.OnWorkerCompleted);
       // 
-      // backgroundWorker2
+      // displayWorker
       // 
-      this.backgroundWorker2.DoWork += new System.ComponentModel.DoWorkEventHandler(this.OnResolvePoint);
-      this.backgroundWorker2.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.OnResolvePointCompleted);
+      this.displayWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.OnResolvePoint);
+      this.displayWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.OnResolvePointCompleted);
       // 
       // ControlGraph
       // 
@@ -152,8 +152,8 @@
     private System.Windows.Forms.TextBox txtX;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.Button cmdUpdate;
-    private System.ComponentModel.BackgroundWorker backgroundWorker1;
-    private System.ComponentModel.BackgroundWorker backgroundWorker2;
+    private System.ComponentModel.BackgroundWorker initializeWorker;
+    private System.ComponentModel.BackgroundWorker displayWorker;
 
   }
 }

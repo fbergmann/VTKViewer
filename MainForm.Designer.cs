@@ -50,6 +50,8 @@ namespace VTKViewer
       this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+      this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
       this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,8 +96,6 @@ namespace VTKViewer
       this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
       this.timer1 = new System.Windows.Forms.Timer(this.components);
       this.toolStripContainer2 = new System.Windows.Forms.ToolStripContainer();
-      this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-      this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
       this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
       this.toolStripContainer1.ContentPanel.SuspendLayout();
       this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -322,6 +322,19 @@ namespace VTKViewer
       this.openToolStripMenuItem.Size = new System.Drawing.Size(176, 22);
       this.openToolStripMenuItem.Text = "&Open";
       this.openToolStripMenuItem.Click += new System.EventHandler(this.OnOpenClick);
+      // 
+      // toolStripSeparator10
+      // 
+      this.toolStripSeparator10.Name = "toolStripSeparator10";
+      this.toolStripSeparator10.Size = new System.Drawing.Size(173, 6);
+      // 
+      // toolStripMenuItem1
+      // 
+      this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+      this.toolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
+      this.toolStripMenuItem1.Size = new System.Drawing.Size(176, 22);
+      this.toolStripMenuItem1.Text = "&Export DMP";
+      this.toolStripMenuItem1.Click += new System.EventHandler(this.OnExportDmpClick);
       // 
       // toolStripSeparator2
       // 
@@ -665,31 +678,22 @@ namespace VTKViewer
       this.toolStripContainer2.TabIndex = 0;
       this.toolStripContainer2.Text = "toolStripContainer2";
       // 
-      // toolStripSeparator10
-      // 
-      this.toolStripSeparator10.Name = "toolStripSeparator10";
-      this.toolStripSeparator10.Size = new System.Drawing.Size(173, 6);
-      // 
-      // toolStripMenuItem1
-      // 
-      this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-      this.toolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-      this.toolStripMenuItem1.Size = new System.Drawing.Size(176, 22);
-      this.toolStripMenuItem1.Text = "&Export DMP";
-      this.toolStripMenuItem1.Click += new System.EventHandler(this.OnExportDmpClick);
-      // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.ClientSize = new System.Drawing.Size(744, 441);
       this.Controls.Add(this.toolStripContainer1);
+      this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
       this.MainMenuStrip = this.menuStrip1;
       this.MinimumSize = new System.Drawing.Size(640, 480);
       this.Name = "MainForm";
       this.Text = "VTK Viewer";
       this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.OnFormClosing);
       this.Load += new System.EventHandler(this.OnLoad);
+      this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
+      this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
+      this.AllowDrop = true;
       this.toolStripContainer1.BottomToolStripPanel.ResumeLayout(false);
       this.toolStripContainer1.BottomToolStripPanel.PerformLayout();
       this.toolStripContainer1.ContentPanel.ResumeLayout(false);

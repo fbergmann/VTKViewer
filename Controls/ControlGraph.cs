@@ -47,19 +47,19 @@ namespace VTKViewer.Controls
     {
       Model = model;
 
-      if (backgroundWorker1.IsBusy) return;
+      if (initializeWorker.IsBusy) return;
       if (_ProgressBar != null) _ProgressBar.Visible = true;
       
-      backgroundWorker1.RunWorkerAsync(location);      
+      initializeWorker.RunWorkerAsync(location);      
     }
     
 
     public void  DisplayPoint(PointF point)
     {
-      if (backgroundWorker1.IsBusy) return;
-      if (backgroundWorker2.IsBusy) return;
+      if (initializeWorker.IsBusy) return;
+      if (displayWorker.IsBusy) return;
 
-      backgroundWorker2.RunWorkerAsync(point);
+      displayWorker.RunWorkerAsync(point);
 
     }
 
@@ -81,7 +81,7 @@ namespace VTKViewer.Controls
       for (int i = 0; i < Model.Files.Count; i++)
       {
         Model.Files[i].Resolve();
-        backgroundWorker1.ReportProgress((int)(((double)i / (double)Model.Files.Count)*100f));
+        initializeWorker.ReportProgress((int)(((double)i / (double)Model.Files.Count)*100f));
       }
       e.Result = location;
     }
@@ -110,6 +110,7 @@ namespace VTKViewer.Controls
     private void OnResolvePointCompleted(object sender, RunWorkerCompletedEventArgs e)
     {
       if (e.Result == null || Model.Dimensions == null) return;
+      var isMultiple = singleResult1.IsExploded;
       singleResult1.CSVResult = (ResultSet) e.Result;
       txtX.Text = Point.X.ToString();
       txtY.Text = Point.Y.ToString();
@@ -121,6 +122,10 @@ namespace VTKViewer.Controls
         singleResult1.Graph.GraphPane.Title.Text = string.Format("Values for Pos: {0},{1}", x, y);
         singleResult1.Graph.GraphPane.Title.IsVisible = true;
       }
+
+      if (singleResult1.IsExploded != isMultiple)
+        singleResult1.ToggleExplode();
+
     }
   }
 }

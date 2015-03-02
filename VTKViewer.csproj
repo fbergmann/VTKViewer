@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ICON_VTKViewer.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CompareData">
       <HintPath>3rdParty\CompareData.dll</HintPath>
@@ -146,6 +149,7 @@
     <Folder Include="Forms\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ICON_VTKViewer.ico" />
     <Content Include="Palettes\black-blue.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

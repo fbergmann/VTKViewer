@@ -17,6 +17,12 @@ namespace VTKViewer
 
     ParallelUnstructuredModel Model { get; set; }
 
+    public String[] PaletteFiles { get; set; }
+
+    public string CurrentPalette { get; set; }
+
+    internal DmpPalette Default { get; set; }
+
     ISingleRenderer CurrentRenderer 
     {
       get
@@ -55,11 +61,9 @@ namespace VTKViewer
         }
       };
       
-
       txtTicks.Text = timer1.Interval.ToString();
 
     }
-
 
     public void OpenFile(string filename)
     {
@@ -89,6 +93,7 @@ namespace VTKViewer
           OpenFile(dialog.FileName);
         }
       }
+
     }
 
     private void DisplayEntry(int index)
@@ -147,7 +152,8 @@ namespace VTKViewer
 
     private void OnTicksChanged(object sender, EventArgs e)
     {
-      int interval; if (int.TryParse(txtTicks.Text, out interval))
+      int interval;
+      if (!int.TryParse(txtTicks.Text, out interval)) return;
       timer1.Interval = interval;
     }
 
@@ -164,16 +170,17 @@ namespace VTKViewer
     private void OnVariableChanged(object sender, EventArgs e)
     {
       Model.CurrentVariable = cmbVariables.SelectedItem as string;
+      
       DisplayEntry(Model.Current);
     }
 
     private void OnTabPageChanged(object sender, EventArgs e)
     {
-      if (tabControl1.SelectedIndex < 2)
-        DisplayEntry(Model.Current);
+      if (tabControl1.SelectedIndex >= 2) return;
+      
+      DisplayEntry(Model.Current);
     }
 
-    public string CurrentPalette { get; set; }
     private void OnPaletteChanged(object sender, EventArgs e)
     {
       int index = cmbPalettes.SelectedIndex;
@@ -200,12 +207,6 @@ namespace VTKViewer
       DisplayEntry(Model.Current);
     }
 
-
-
-    public String[] PaletteFiles { get; set; }
-
-    internal LibEditSpatial.Model.DmpPalette Default { get; set; }
-
     private void LoadPalettes(string baseDirectory)
     {
       PaletteFiles = Directory.GetFiles(baseDirectory, "*.txt", SearchOption.TopDirectoryOnly);
@@ -231,10 +232,46 @@ namespace VTKViewer
       var dir = LibEditSpatial.Util.GetDir(null);
       for (int i = 0; i < Model.Variables.Length; i++)
       {
-        var current = Path.Combine(dir, "conc_" + Model.Variables[i] + ".dmp");
+        var current = Path.Combine(dir, string.Format("conc_{0}.dmp", Model.Variables[i]));
         var dmp = Model.Current.ToDmp(i);
         dmp.SaveAs(current);
       }
     }
+
+    #region Drag / Drop
+
+    private void MainForm_DragDrop(object sender, DragEventArgs e)
+    {
+      try
+      {
+        var sFilenames = (string[])e.Data.GetData(DataFormats.FileDrop);
+        var oInfo = new FileInfo(sFilenames[0]);
+        if (oInfo.Extension.ToLower() == ".pvd" || oInfo.Extension.ToLower() == ".vtu")
+        {
+          OpenFile(sFilenames[0]);
+        }
+      }
+      catch (Exception)
+      {
+      }
+    }
+
+    private void MainForm_DragEnter(object sender, DragEventArgs e)
+    {
+      if (e.Data.GetDataPresent(DataFormats.FileDrop))
+      {
+        var sFilenames = (string[])e.Data.GetData(DataFormats.FileDrop);
+        var oInfo = new FileInfo(sFilenames[0]);
+        if (oInfo.Extension.ToLower() == ".pvd" || oInfo.Extension.ToLower() == ".vtu")
+        {
+          e.Effect = DragDropEffects.Copy;
+          return;
+        }
+      }
+      e.Effect = DragDropEffects.None;
+    }
+
+    #endregion
+
   }
 }
